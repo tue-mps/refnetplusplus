@@ -25,7 +25,7 @@ The models are trained and tested on the [RADIal dataset](https://github.com/val
 [here](https://github.com/valeoai/RADIal/tree/main#labels:~:text=Download%20instructions). Our model is located under `pretrainedmodel/refnetplusplus.pth`.
 
 ## Model Predictions
-Qualitative results on samples from the test set. (a) depicts the ground truth labels in Bird’s-Eye Polar View where the free space segmentation is in white while the BEV bounding boxes are in green. (b) are our prediction results. For a better visualization, the bounding box predictions are projected onto the camera images as shown in (c), with the ground-truth boxes. The free space predictions are projected by consolidating the intensity values. Zoom in to better visualize the False Positives and False Negatives.
+Qualitative results on samples from the test set. (a) depicts the ground truth labels in Bird’s-Eye Polar View where the free space segmentation is in white while the BEV bounding boxes are in green. (b) are our prediction results. For a better visualization, the bounding box predictions are projected onto the camera images as shown in (c), with the ground-truth boxes. The free space predictions are projected by consolidating the intensity values.
 
 <p align="center">
   <img src="images/qualitative.png" div align=center>
