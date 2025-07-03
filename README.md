@@ -4,8 +4,7 @@
 - **(2025/07/01)** Accepted to IEEE ITSC 2025!
 
 ## Overview
-The image processing pipeline first transforms the camera image into Bird’s-Eye View (BEV). Subsequently, the resultant BEV undergoes
-conversion into Polar representation, directly mapping to the Range-Azimuth (RA) image. Object detection is performed on RA image features fused with radar features from the radar decoder. The predictions obtained in the RA view are shown in the camera images with ground-truth bounding boxes in green and predictions in blue.
+The variational encoder-decoder architecture learns the transformation from the front-view camera image to BEV, which corresponds to the RA domain. On the other hand, the radar encoder-decoder architecture learns to recover the angle information from the complex Range-Doppler (RD) input, producing Range-Azimuth (RA) features. Free space segmentation and vehicle detection are performed on the resulting features fused by concatenation by the appropriate heads. (a) ground truth labels, (b) prediction results, and (c) predictions projected onto the camera image.
 
 <p align="center">
   <img src="images/overview.png" div align=center>
@@ -31,6 +30,11 @@ Qualitative results on samples from the test set. (a) depicts the ground truth l
 <p align="center">
   <img src="images/qualitative.png" div align=center>
 </p>
+
+<p align="center">
+  <img src="images/qualitative.png" style="width:80%;">
+</p>
+
 
 ## Setting up the virtual environment
 ### Requirements
@@ -90,7 +94,7 @@ $ python 4-FPS.py
 ```
 
 ## Conclusion and Further research
-- We proposed REFNet++, a fusion architecture that performs multitasking and can also operate in a single task mode in the BEV domain, designed to boost the computational efficiency of the camera-radar perception system. 
+- We proposed REFNet++, a fusion architecture that performs multitasking and can also operate in a single task mode, designed to boost the computational efficiency of the camera-radar perception system. 
 - In line with our research goal and the results demonstrated on the RADIal dataset, our method exhibits excellent trade-off between performance while retaining a comparatively low computing power.
 - Our code can be extended for further analysis, for example to include LiDAR data.
 - We plan to further accelerate this research using other fusion datasets.
