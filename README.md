@@ -84,10 +84,14 @@ $ python 3-Test.py
 ```
 A video like this should pop up:
 
-<p align="center">
-  <img src="images/refnetplusplus_polarpred.gif" height="120px" style="margin-right: 10px;">
-  <img src="images/refnetplusplus_projected.gif" height="120px">
-</p>
+<div align="center">
+  <div style="display: inline-block;">
+    <img src="images/refnetplusplus_polarpred.gif" height="120px">
+  </div>
+  <div style="display: inline-block; margin-left: 10px;">
+    <img src="images/refnetplusplus_projected.gif" height="120px">
+  </div>
+</div>
 
 
 ### Computational complexity
