@@ -82,11 +82,11 @@ To obtain qualitative results, please load the trained model and run:
 ```bash
 $ python 3-Test.py
 ```
-You should be able to see such a video:
+A video like this should pop up:
 
-<p align="left">
-  <img src="images/refnetplusplus_polarpred.gif" height="170px" style="margin-right: 10px;">
-  <img src="images/refnetplusplus_projected.gif" height="170px">
+<p align="center">
+  <img src="images/refnetplusplus_polarpred.gif" height="120px" style="margin-right: 10px;">
+  <img src="images/refnetplusplus_projected.gif" height="120px">
 </p>
 
 
