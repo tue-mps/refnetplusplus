@@ -4,7 +4,7 @@
 - **(2025/07/01)** Accepted to IEEE ITSC 2025!
 
 ## Overview
-The variational encoder-decoder architecture learns the transformation from the front-view camera image to BEV, which corresponds to the RA domain. On the other hand, the radar encoder-decoder architecture learns to recover the angle information from the complex Range-Doppler (RD) input, producing Range-Azimuth (RA) features. Free space segmentation and vehicle detection are performed on the resulting features fused by concatenation by the appropriate heads. (a) ground truth labels, (b) prediction results, and (c) predictions projected onto the camera image.
+The variational encoder-decoder architecture learns the transformation from the front-view camera image to BEV, which corresponds to the Range-Azimuth (RA) domain. On the other hand, the radar encoder-decoder architecture learns to recover the angle information from the complex Range-Doppler (RD) input, producing RA features. Free space segmentation and vehicle detection are performed on the resulting features fused by concatenation by the appropriate heads. (a) ground truth labels, (b) prediction results, and (c) predictions projected onto the camera image.
 
 <p align="center">
   <img src="images/overview.png" div align=center>
@@ -96,7 +96,7 @@ $ python 4-FPS.py
 
 ## Acknowledgments
 - Thanks to Elektrobit Automotive GmbH and Mobile Perception Systems Lab from Eindhoven University of Technology for their continous support.
-- This project is inspired from the codebase from [REFNet](https://github.com/tue-mps/refnet/).
+- This project is an extended version of [REFNet](https://github.com/tue-mps/refnet/).
 
 ## License
 The repo is released under the BSD 3-Clause License.
