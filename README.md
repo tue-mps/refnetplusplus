@@ -82,6 +82,14 @@ To obtain qualitative results, please load the trained model and run:
 ```bash
 $ python 3-Test.py
 ```
+You should be able to see such a video:
+<p align="center">
+  <img src = "images/refnetplusplus_projected.gif" width="80%">
+</p>
+<p align="center">
+  <img src = "images/refnetplusplus_polarpred.gif" width="80%">
+</p>
+
 ### Computational complexity
 To compute Frames Per Second (FPS), please load the trained model and run:
 ```bash

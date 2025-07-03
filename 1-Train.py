@@ -97,7 +97,6 @@ def main(config):
     freespace_loss = nn.BCEWithLogitsLoss(reduction='mean')
 
     # Set up early stopping parameters
-    patience = 8  # Number of epochs with no improvement after which training will be stopped
     early_stopping_counter = 0
     best_validation_loss = float('inf')
     classif_loss = torch.tensor(0, dtype=torch.float64)

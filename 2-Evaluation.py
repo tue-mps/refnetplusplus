@@ -46,7 +46,6 @@ def main(config, checkpoint):
         print("Evaluating REFNet++")
         print("*******************")
 
-
     net.to(device)
 
     print('===========  Loading the model ==================:')

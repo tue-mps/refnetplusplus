@@ -8,6 +8,7 @@ from dataset.dataset_fusion import RADIal
 from dataset.dataloader_fusion import CreateDataLoaders
 import cv2
 from utils.util import DisplayHMI
+import re
 
 gpu_id = 0
 
@@ -44,23 +45,53 @@ def main(config, checkpoint_filename):
     net.load_state_dict(dict['net_state_dict'])
     net.eval()
 
-    for data in test_loader:
+    # Set up the VideoWriter
+    save_video = True
+    video_1 = cv2.VideoWriter(f'/home/kach271771/refnetplusplus_fv.mp4', cv2.VideoWriter_fourcc(*'DIVX'), 10, (850, 540))
+    video_2 = cv2.VideoWriter(f'/home/kach271771/refnetplusplus_bev.mp4', cv2.VideoWriter_fourcc(*'DIVX'), 10, (448, 256))
+
+    for data in dataset: #this considers the full dataset, you can also check it using the "test_loader"
         is_training = False
-        inputs1 = data[0].to(device).float()  # radar data
-        inputs2 = data[1].to(device).float()  # camera half fv image
-        seg_map_label = data[2].to(device).double()
-        det_label = data[3].to(device).float()
+        inputs1 = torch.tensor(data[0]).permute(2, 0, 1).to(device).float().unsqueeze(0)
+        inputs2 = torch.tensor(data[1]).permute(2, 0, 1).to(device).float().unsqueeze(0)
+        seg_map_label = torch.tensor(data[2]).to(device).double().unsqueeze(0)
+        det_label = torch.tensor(data[3]).to(device).float().unsqueeze(0)
+        box_labels = data[4]
+        sample_id = re.search(r'_([0-9]+)\.jpg$', data[5])
+        sample_id = sample_id.group(1)
+        sample_id = int(sample_id)
         with torch.set_grad_enabled(False):
             outputs = net(inputs2, inputs1, is_training)
 
-        hmi = DisplayHMI(data[3], seg_map_label, det_label,outputs)
+        (seg_labels_flip, out_seg_flip,
+         modeloutput_seg, overlay) = DisplayHMI(data[5], inputs1,
+                                               seg_map_label, box_labels,
+                                               outputs, enc, sample_id,
+                                               datapath=config['dataset']['root_dir'])
 
-        cv2.imshow('Multi-Tasking',hmi)
+        overlay = cv2.cvtColor(overlay, cv2.COLOR_RGB2BGR)
+        out = np.hstack((seg_labels_flip, out_seg_flip))
+
+        if save_video == True:
+            overlay = overlay.astype(np.float32) * 255.0
+            overlay = overlay.astype(np.uint8)
+            out = out.astype(np.float32) * 255.0
+            out = out.astype(np.uint8)
+            video_1.write(overlay)
+            video_2.write(out)
+            cv2.imshow('REFNet++', overlay)
+            cv2.imshow('Prediction Vs Ground-Truth', out)
+        else:
+            cv2.imshow('REFNet++', overlay)
+            cv2.imshow('Ground-Truth Vs Prediction in Polar Domain', out)
+            # cv2.waitKey(0) # if you want to visualize frame by frame slowly, then uncomment this line (to go to next frame press space bar key)
 
         # Press Q on keyboard to  exit
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break
 
+    video_1.release()
+    video_2.release()
     cv2.destroyAllWindows()
 
 

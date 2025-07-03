@@ -78,7 +78,7 @@ def main(config, checkpoint_filename):
 
 if __name__ == '__main__':
     # PARSE THE ARGS
-    parser = argparse.ArgumentParser(description='REFNet++ FPS Calculation')
+    parser = argparse.ArgumentParser(description='REFNet++ Predictions')
     parser.add_argument('-c', '--config',
                         default='/pretrainedmodel/config_fusion.json',
                         type=str,
