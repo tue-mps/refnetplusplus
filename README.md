@@ -84,9 +84,9 @@ $ python 3-Test.py
 ```
 You should be able to see such a video:
 
-<p align="center">
-  <img src="images/refnetplusplus_polarpred.gif" height="125px" style="margin-right: 10px;">
-  <img src="images/refnetplusplus_projected.gif" height="125px">
+<p align="left">
+  <img src="images/refnetplusplus_polarpred.gif" height="170px" style="margin-right: 10px;">
+  <img src="images/refnetplusplus_projected.gif" height="170px">
 </p>
 
 
