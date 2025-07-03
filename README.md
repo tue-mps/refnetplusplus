@@ -84,15 +84,9 @@ $ python 3-Test.py
 ```
 A video like this should pop up:
 
-<div align="center">
-  <div style="display: inline-block;">
-    <img src="images/refnetplusplus_polarpred.gif" height="120px">
-  </div>
-  <div style="display: inline-block; margin-left: 10px;">
-    <img src="images/refnetplusplus_projected.gif" height="120px">
-  </div>
-</div>
-
+<p align="center">
+  <img src="images/refnetplusplus.gif" div align=center>
+</p>
 
 ### Computational complexity
 To compute Frames Per Second (FPS), please load the trained model and run:

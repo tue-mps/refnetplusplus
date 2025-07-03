@@ -45,10 +45,9 @@ def main(config, checkpoint_filename):
     net.load_state_dict(dict['net_state_dict'])
     net.eval()
 
-    # Set up the VideoWriter
-    save_video = True
-    video_1 = cv2.VideoWriter(f'/home/kach271771/refnetplusplus_fv.mp4', cv2.VideoWriter_fourcc(*'DIVX'), 10, (850, 540))
-    video_2 = cv2.VideoWriter(f'/home/kach271771/refnetplusplus_bev.mp4', cv2.VideoWriter_fourcc(*'DIVX'), 10, (448, 256))
+    # Set up the VideoWriter: set this to True to save the video output
+    save_video = False
+    video = cv2.VideoWriter(f'/images/refnetplusplus_bev.mp4', cv2.VideoWriter_fourcc(*'DIVX'), 10, (896, 256))
 
     for data in dataset: #this considers the full dataset, you can also check it using the "test_loader"
         is_training = False
@@ -70,18 +69,26 @@ def main(config, checkpoint_filename):
                                                datapath=config['dataset']['root_dir'])
 
         overlay = cv2.cvtColor(overlay, cv2.COLOR_RGB2BGR)
-        out = np.hstack((seg_labels_flip, out_seg_flip))
 
         if save_video == True:
-            overlay = overlay.astype(np.float32) * 255.0
+            overlay = cv2.resize(overlay, dsize=(448, 256))
+            overlay = overlay.astype(np.float32) * 255
             overlay = overlay.astype(np.uint8)
+            out = np.hstack((overlay / 255, seg_labels_flip, out_seg_flip))
             out = out.astype(np.float32) * 255.0
             out = out.astype(np.uint8)
-            video_1.write(overlay)
-            video_2.write(out)
-            cv2.imshow('REFNet++', overlay)
-            cv2.imshow('Prediction Vs Ground-Truth', out)
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            font_scale = 0.6
+            thickness = 1
+            color = (255, 255, 255)  # whiteq
+            panel_width = out.shape[1] // 3
+            cv2.putText(out, 'overlay', (int(panel_width * 0.05), 20), font, font_scale, color, thickness, cv2.LINE_AA)
+            cv2.putText(out, 'gt', (int(panel_width * 1.55), 20), font, font_scale, color, thickness, cv2.LINE_AA)
+            cv2.putText(out, 'pred', (int(panel_width * 2.25), 20), font, font_scale, color, thickness, cv2.LINE_AA)
+            video.write(out)
+            cv2.imshow('Results', out)
         else:
+            out = np.hstack((seg_labels_flip, out_seg_flip))
             cv2.imshow('REFNet++', overlay)
             cv2.imshow('Ground-Truth Vs Prediction in Polar Domain', out)
             # cv2.waitKey(0) # if you want to visualize frame by frame slowly, then uncomment this line (to go to next frame press space bar key)
@@ -90,8 +97,7 @@ def main(config, checkpoint_filename):
         if cv2.waitKey(25) & 0xFF == ord('q'):
             break
 
-    video_1.release()
-    video_2.release()
+    video.release()
     cv2.destroyAllWindows()
 
 
