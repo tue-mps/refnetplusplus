@@ -48,7 +48,7 @@ All the codes are tested in the following environment:
 - Python 3.9
 
 ### Installation
-0. Clone the repo and set up the conda environment:
+0. Install conda if you don't have it installed. Then clone the repo and set up the conda environment:
 ```bash
 $ git clone "this repo"
 $ conda create --prefix "your_path" python=3.9 -y
@@ -78,15 +78,18 @@ $ pip3 install numpy==1.23
 ## Running the code
 
 ### Training
-Run the following to train the model. Please check the `config/config_fusion.json` before training. REFNet++ in multi-tasking model will be chosen by default.
+Run the following to train the model from scratch. Please check the `config/config_fusion.json` before training. REFNet++ in multi-tasking mode will be chosen by default. To train only one task, then set the `DetectionHead` or `SegmentationHead` to `True` appropriately.
+
 ```bash
 $ python 1-Train.py
 ```
+
 ### Evaluation
 To evaluate the model performance, please load the trained model and run:
 ```bash
 $ python 2-Evaluation.py
 ```
+
 ### Testing
 To obtain qualitative results, please load the trained model and run:
 ```bash
@@ -99,7 +102,7 @@ A video like this should pop up:
 </p>
 
 ### Computational complexity
-To compute Frames Per Second (FPS), please load the trained model and run:
+Frames Per Second (FPS) is measured on NVIDIA RTX A6000. To compute FPS, please load the trained model and run:
 ```bash
 $ python 4-FPS.py
 ```
