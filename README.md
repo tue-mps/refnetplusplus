@@ -2,8 +2,8 @@
 
 **[Kavin Chandrasekaran](https://scholar.google.com/citations?user=FMeH0ZkAAAAJ&hl=en)<sup>1,2</sup>, [Sorin Grigorescu](https://scholar.google.com/citations?user=3TsU0iMAAAAJ&hl=en)<sup>1,3</sup>, [Gijs Dubbelman](https://scholar.google.nl/citations?user=wy57br8AAAAJ)<sup>2</sup>, [Pavol Jancura](https://scholar.google.com/citations?user=ApILewUAAAAJ&hl=en)<sup>2</sup>**
 
-¹ Elektrobit Automotive GmbH
-² Eindhoven University of Technology
+¹ Elektrobit Automotive GmbH  
+² Eindhoven University of Technology  
 ³ Transilvania University of Brasov
 
 ## News
@@ -22,7 +22,7 @@ Free space segmentation and vehicle detection are performed on the resulting fea
 
 ## Abstract
 A realistic view of the vehicle’s surroundings is generally offered by camera sensors, which is crucial for environmental perception. Affordable radar sensors, on the other hand, are becoming invaluable due to their robustness in variable weather conditions. However, because of their noisy output and reduced classification capability, they work best when combined with other sensor data. Specifically, we address the challenge of multimodal sensor fusion by aligning radar and camera data in a unified domain, prioritizing not only accuracy, but also computational efficiency. Our work leverages the raw range-Doppler (RD) spectrum from radar
-and front-view camera images as inputs. To enable effective fusion, we employ a variational encoder-decoder architecture that learns the transformation of front-view camera data into the Bird’s-Eye View (BEV) polar domain. Concurrently, a radar encoder-decoder learns to recover the angle information from the RD data that produce Range-Azimuth (RA) features. This alignment ensures that both modalities are represented in a compatible domain, facilitating robust and efficient sensor fusion. This work is an enhanced version of [REFNet](https://github.com/tue-mps/refnet). We evaluated our fusion strategy for vehicle detection and free space segmentation against state-of-the-art methods using the RADIal dataset.
+and front-view camera images as inputs. To enable effective fusion, we employ a variational encoder-decoder architecture that learns the transformation of front-view camera data into the Bird’s-Eye View (BEV) polar domain. Concurrently, a radar encoder-decoder learns to recover the angle information from the RD data that produce Range-Azimuth (RA) features. This alignment ensures that both modalities are represented in a compatible domain, facilitating robust and efficient sensor fusion. This work is an enhanced version of our previous architecture [REFNet](https://github.com/tue-mps/refnet). We evaluated our fusion strategy for vehicle detection and free space segmentation against state-of-the-art methods using the RADIal dataset.
 
 ## Fusion Architecture
 The input to the radar only network is the range-Doppler (RD) data, while the camera only network intakes front-view camera images. x0 to x4 are the feature maps from the respective encoder blocks. The encoder is connected to the decoder by a thick blue arrow, by which the encoded features are upscaled to higher resolutions. The skip connections are shown as dotted lines that preserves the spatial information. The radar and camera features are fused by concatenation on the subsequent heads. Predictions are in Bird’s Eye RA Polar View.
