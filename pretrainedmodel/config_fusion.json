@@ -14,7 +14,7 @@
         "radar_input": "True"
     },
     "dataset": {
-        "root_dir": "/media/kach271771/LocalDisk/PhD/dataset/Valeo/RADIal/",
+        "root_dir": "media/kavin/data/RADIal/",
         "geometry":{
             "ranges": [512,896,1],
             "resolution": [0.201171875,0.2],
@@ -95,6 +95,6 @@
         "translation_vector": [0.09138029, 1.38369885, 1.43674736]
     },
     "output": {
-        "dir": "/volumes/8TB_volume1/kavin/results_pth/ablations/withoutvae/onlyseg/"
+        "dir": "/home/kavin/results/refnetplusplus/"
     }
 }

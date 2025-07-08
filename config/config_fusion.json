@@ -49,7 +49,7 @@
             },
         "ablation": {
             "confidential": "False"
-            },
+            }
     },
     "losses": {
         "fct":"PixorLoss",
