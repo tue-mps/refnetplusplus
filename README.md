@@ -115,7 +115,7 @@ $ python 4-FPS.py
 
 ## Acknowledgments
 - Thanks to Elektrobit Automotive GmbH and Mobile Perception Systems Lab from Eindhoven University of Technology for their continous support.
-- This project is an extended version of [REFNet](https://github.com/tue-mps/refnet/).
+- Visit our previous work: [REFNet](https://github.com/tue-mps/refnet/).
 
 ## License
 The repo is released under the BSD 3-Clause License.
