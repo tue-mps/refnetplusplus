@@ -95,11 +95,12 @@ To obtain qualitative results, please load the trained model and run:
 ```bash
 $ python 3-Test.py
 ```
-A video like this should pop up:
+A video like this should pop up, where gt &rarr; ground truth; pred &rarr; our model predictions in multi-tasking mode; overlay &rarr; predictions are projected on to the camera frames:
 
 <p align="center">
   <img src="images/refnetplusplus.gif" div align=center>
 </p>
+
 
 ### Computational complexity
 Frames Per Second (FPS) is measured on NVIDIA RTX A6000. To compute FPS, please load the trained model and run:
