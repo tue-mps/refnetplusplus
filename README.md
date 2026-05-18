@@ -8,6 +8,7 @@
 
 ## News
 - **(2025/07/01)** Accepted to IEEE ITSC 2025!
+- **(2026/05/12)** [Paper](https://arxiv.org/abs/2605.11824)
 
 ## Overview
 The variational encoder-decoder architecture learns the transformation from the front-view camera image to BEV, which corresponds to the Range-Azimuth (RA) domain. 
